@@ -11,7 +11,10 @@ def nb_new_stones(steps, stone):
     elif len(str(stone)) % 2 == 0:
         n = len(str(stone))
         stone_1, stone_2 = int(str(stone)[:n // 2]), int(str(stone)[n // 2:])
-        total = nb_new_stones(steps - 1, stone_1) + nb_new_stones(steps - 1, stone_2)
+        total = (
+            nb_new_stones(steps - 1, stone_1) +
+            nb_new_stones(steps - 1, stone_2)
+        )
     else:
         total = nb_new_stones(steps - 1, 2024 * stone)
     CACHE[(steps, stone)] = total
